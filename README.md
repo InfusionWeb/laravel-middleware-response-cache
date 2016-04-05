@@ -7,7 +7,7 @@ Provides caching of entire HTML responses in Laravel 5.
 Via Composer
 
 ``` bash
-$ composer require InfusionWeb/laravel-middleware-response-cache
+$ composer require infusionweb/laravel-middleware-response-cache
 ```
 
 ## Usage

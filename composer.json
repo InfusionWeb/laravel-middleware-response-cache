@@ -1,5 +1,5 @@
 {
-    "name": "InfusionWeb/laravel-middleware-response-cache",
+    "name": "infusionweb/laravel-middleware-response-cache",
     "description": "Provides caching of HTML pages in Laravel responses.",
     "keywords": [
         "middleware",
@@ -8,7 +8,7 @@
         "headers",
         "laravel"
     ],
-    "homepage": "https://github.com/InfusionWeb/laravel-middleware-response-cache",
+    "homepage": "https://github.com/infusionweb/laravel-middleware-response-cache",
     "license": "MIT",
     "authors": [
         {

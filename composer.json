@@ -1,0 +1,35 @@
+{
+    "name": "InfusionWeb/laravel-middleware-response-cache",
+    "description": "Provides caching of HTML pages in Laravel responses.",
+    "keywords": [
+        "middleware",
+        "psr7",
+        "response cache",
+        "headers",
+        "laravel"
+    ],
+    "homepage": "https://github.com/InfusionWeb/laravel-middleware-response-cache",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Russell Keppner",
+            "email": "russell.keppner@gmail.com",
+            "homepage": "https://github.com/rkeppner",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.9",
+        "illuminate/http": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "InfusionWeb\\Laravel\\Http\\Middleware\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

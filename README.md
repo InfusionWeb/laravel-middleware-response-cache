@@ -6,7 +6,7 @@ Provides caching of entire HTML responses in Laravel 5.
 
 Via Composer
 
-``` bash
+```bash
 $ composer require infusionweb/laravel-middleware-response-cache
 ```
 
@@ -14,7 +14,7 @@ $ composer require infusionweb/laravel-middleware-response-cache
 
 ### Register as route middleware
 
-``` php
+```php
 // within app/Http/Kernal.php
 
 protected $routeMiddleware = [
@@ -29,7 +29,7 @@ protected $routeMiddleware = [
 
 The following will cache the `gallery` route.
 
-``` php
+```php
 // within app/Http/routes.php
 
 Route::get('gallery', ['middleware' => ['cachebefore', 'cacheafter'], function () {
@@ -41,7 +41,7 @@ Route::get('gallery', ['middleware' => ['cachebefore', 'cacheafter'], function (
 
 The following will apply all default profiles to all methods within the `GalleryController`.
 
-``` php
+```php
 // within app/Http/Controllers/GalleryController.php
 
 public function __construct()
@@ -56,7 +56,7 @@ Middleware can be registered the same as 5.1, or by the following method.
 
 ### Add to route middleware group
 
-``` php
+```php
 // within app/Http/Kernal.php
 
 protected $middlewareGroups = [
@@ -74,7 +74,7 @@ protected $middlewareGroups = [
 
 All routes using the `web` middleware group will be cached.
 
-``` php
+```php
 // within app/Http/routes.php
 
 Route::group(['middleware' => ['web']], function () {
@@ -82,6 +82,16 @@ Route::group(['middleware' => ['web']], function () {
         return 'pictures!';
     });
 });
+```
+
+## Enable the cache middleware
+
+The middleware will only cache HTML responses when explicitly enabled, which means that development systems will not cache pages by default.
+
+```ini
+; within .env
+
+CACHE_ROUTE=true
 ```
 
 ## Credits

@@ -84,19 +84,6 @@ Route::group(['middleware' => ['web']], function () {
 });
 ```
 
-### Apply HTML response cache to controllers
-
-The following will apply all default profiles to all methods within the `GalleryController`.
-
-``` php
-// within app/Http/Controllers/GalleryController.php
-
-public function __construct()
-{
-    $this->middleware(['cachebefore', 'cacheafter']);
-}
-```
-
 ## Credits
 
 - [Russell Keppner](https://github.com/rkeppner)

@@ -23,7 +23,7 @@ class ResponseCacheBeforeMiddleware
 
             $request_uri = $request->url() . '?' . http_build_query($request->only('page'));
 
-            $key = $this->keygen($request_uri);
+            $key = 'route_' . Str::slug($request_uri);
 
             if (Cache::has($key)) {
                 $content = Cache::get($key);
@@ -34,16 +34,5 @@ class ResponseCacheBeforeMiddleware
         }
 
         return $next($request);
-    }
-
-    /**
-     * Generate cache key for route storage.
-     *
-     * @param string $url
-     * @return string
-     */
-    protected function keygen($url)
-    {
-        return 'route_' . Str::slug($url);
     }
 }

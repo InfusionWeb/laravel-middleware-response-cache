@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class BeforeCacheMiddleware
+class ResponseCacheAfterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,6 +18,8 @@ class BeforeCacheMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        $response = $next($request);
+
         // Only fire when explicitly enabled.
         if (getenv('CACHE_ROUTE') == true) {
 
@@ -25,15 +27,13 @@ class BeforeCacheMiddleware
 
             $key = $this->keygen($request_uri);
 
-            if (Cache::has($key)) {
-                $content = Cache::get($key);
-
-                return response($content);
+            if (! Cache::has($key)) {
+                Cache::put($key, $response->getContent(), config('cache.route_minutes'));
             }
 
         }
 
-        return $next($request);
+        return $response;
     }
 
     /**

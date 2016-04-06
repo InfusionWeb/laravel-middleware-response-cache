@@ -19,8 +19,8 @@ $ composer require infusionweb/laravel-middleware-response-cache
 
 protected $routeMiddleware = [
     //
-    'cachebefore' => \InfusionWeb\Laravel\Http\Middleware\BeforeCacheMiddleware::class,
-    'cacheafter' => \InfusionWeb\Laravel\Http\Middleware\AfterCacheMiddleware::class,
+    'cachebefore' => \InfusionWeb\Laravel\Http\Middleware\ResponseCacheBeforeMiddleware::class,
+    'cacheafter' => \InfusionWeb\Laravel\Http\Middleware\ResponseCacheAfterMiddleware::class,
     //
 ];
 ```
@@ -62,8 +62,8 @@ Middleware can be registered the same as 5.1, or by the following method.
 protected $middlewareGroups = [
     'web' => [
         //
-        'cachebefore' => \InfusionWeb\Laravel\Http\Middleware\BeforeCacheMiddleware::class,
-        'cacheafter' => \InfusionWeb\Laravel\Http\Middleware\AfterCacheMiddleware::class,
+        'cachebefore' => \InfusionWeb\Laravel\Http\Middleware\ResponseCacheBeforeMiddleware::class,
+        'cacheafter' => \InfusionWeb\Laravel\Http\Middleware\ResponseCacheAfterMiddleware::class,
         //
     ],
     //

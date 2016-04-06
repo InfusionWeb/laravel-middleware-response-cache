@@ -19,7 +19,7 @@ $ composer require infusionweb/laravel-middleware-response-cache
 
 'providers' => [
     //
-    \InfusionWeb\Laravel\Http\Middleware\ResponseCacheServiceProvider::class,
+    InfusionWeb\Laravel\Http\Middleware\ResponseCacheServiceProvider::class,
 ];
 ```
 

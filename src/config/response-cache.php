@@ -8,7 +8,7 @@ return [
     'enable' => env('RESPONSE_CACHE_ENABLE', false),
 
     /*
-     * Length of time to cache the HTML reponse, in minutes.
+     * Length of time to cache the HTML response, in minutes.
      */
     'length' => env('RESPONSE_CACHE_LENGTH', 60),
 

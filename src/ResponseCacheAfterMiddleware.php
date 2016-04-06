@@ -21,14 +21,14 @@ class ResponseCacheAfterMiddleware
         $response = $next($request);
 
         // Only fire when explicitly enabled.
-        if (getenv('CACHE_ROUTE') == true) {
+        if (config('RESPONSE_CACHE_ENABLE', false)) {
 
             $request_uri = $request->url() . '?' . http_build_query($request->only('page'));
 
             $key = $this->keygen($request_uri);
 
             if (! Cache::has($key)) {
-                Cache::put($key, $response->getContent(), config('cache.route_minutes'));
+                Cache::put($key, $response->getContent(), config('RESPONSE_CACHE_LENGTH', 60));
             }
 
         }

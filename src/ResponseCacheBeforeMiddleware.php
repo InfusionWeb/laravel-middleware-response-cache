@@ -19,7 +19,7 @@ class ResponseCacheBeforeMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Only fire when explicitly enabled.
-        if (getenv('CACHE_ROUTE') == true) {
+        if (config('RESPONSE_CACHE_ENABLE', false)) {
 
             $request_uri = $request->url() . '?' . http_build_query($request->only('page'));
 

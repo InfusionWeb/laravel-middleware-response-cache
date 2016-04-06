@@ -2,7 +2,7 @@
 
 Provides caching of entire HTML responses in Laravel 5.
 
-## Install
+## Installation
 
 Via Composer
 
@@ -11,6 +11,17 @@ $ composer require infusionweb/laravel-middleware-response-cache
 ```
 
 ## Laravel 5.1 Usage
+
+### Add the service provider
+
+```php
+// within config/app.php
+
+'providers' => [
+    //
+    \InfusionWeb\Laravel\Http\Middleware\ResponseCacheServiceProvider::class,
+];
+```
 
 ### Register as route middleware
 
@@ -84,14 +95,25 @@ Route::group(['middleware' => ['web']], function () {
 });
 ```
 
-## Enable the cache middleware
+## Enable and configure response caching
 
-The middleware will only cache HTML responses when explicitly enabled, which means that development systems will not cache pages by default.
+The middleware will only cache HTML responses when explicitly enabled. This is to allow development systems to operate normally by default, while easily allowing production systems to cache HTML responses.
 
-```ini
-; within .env
+### Publish the package config file
 
-CACHE_ROUTE=true
+```bash
+$ php artisan vendor:publish --provider="InfusionWeb\Laravel\Http\Middleware\ResponseCacheServiceProvider"
+```
+
+You may now enable response caching and change the default cache time by editing the `config/response-cache.php` file.
+
+```php
+return [
+    'enable' => env('RESPONSE_CACHE_ENABLE', false),
+
+    // Length of time to cache the HTML response, in minutes.
+    'length' => env('RESPONSE_CACHE_LENGTH', 60),
+];
 ```
 
 ## Credits

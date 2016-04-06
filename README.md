@@ -10,7 +10,7 @@ Via Composer
 $ composer require infusionweb/laravel-middleware-response-cache
 ```
 
-## Usage
+## Laravel 5.1 Usage
 
 ### Register as route middleware
 
@@ -35,6 +35,53 @@ The following will cache the `gallery` route.
 Route::get('gallery', ['middleware' => ['cachebefore', 'cacheafter'], function () {
     return 'pictures!';
 }]);
+```
+
+### Apply HTML response cache to controllers
+
+The following will apply all default profiles to all methods within the `GalleryController`.
+
+``` php
+// within app/Http/Controllers/GalleryController.php
+
+public function __construct()
+{
+    $this->middleware(['cachebefore', 'cacheafter']);
+}
+```
+
+## Laravel 5.2 Usage
+
+Middleware can be registered the same as 5.1, or by the following method.
+
+### Add to route middleware group
+
+``` php
+// within app/Http/Kernal.php
+
+protected $middlewareGroups = [
+    'web' => [
+        //
+        'cachebefore' => \InfusionWeb\Laravel\Http\Middleware\BeforeCacheMiddleware::class,
+        'cacheafter' => \InfusionWeb\Laravel\Http\Middleware\AfterCacheMiddleware::class,
+        //
+    ],
+    //
+];
+```
+
+### Apply HTML response cache to routes
+
+All routes using the `web` middleware group will be cached.
+
+``` php
+// within app/Http/routes.php
+
+Route::group(['middleware' => ['web']], function () {
+    Route::get('gallery', function () {
+        return 'pictures!';
+    });
+});
 ```
 
 ### Apply HTML response cache to controllers

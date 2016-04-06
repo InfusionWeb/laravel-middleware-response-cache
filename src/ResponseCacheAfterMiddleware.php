@@ -21,14 +21,14 @@ class ResponseCacheAfterMiddleware
         $response = $next($request);
 
         // Only fire when explicitly enabled.
-        if (config('RESPONSE_CACHE_ENABLE', false)) {
+        if (config('response-cache.enable', false)) {
 
             $request_uri = $request->url() . '?' . http_build_query($request->only('page'));
 
             $key = 'route_' . Str::slug($request_uri);
 
             if (! Cache::has($key)) {
-                Cache::put($key, $response->getContent(), config('RESPONSE_CACHE_LENGTH', 60));
+                Cache::put($key, $response->getContent(), config('response-cache.length', 60));
             }
 
         }

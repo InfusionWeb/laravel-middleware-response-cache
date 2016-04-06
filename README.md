@@ -26,7 +26,7 @@ $ composer require infusionweb/laravel-middleware-response-cache
 ### Register as route middleware
 
 ```php
-// within app/Http/Kernal.php
+// within app/Http/Kernel.php
 
 protected $routeMiddleware = [
     //
@@ -68,7 +68,7 @@ Middleware can be registered the same as 5.1, or by the following method.
 ### Add to route middleware group
 
 ```php
-// within app/Http/Kernal.php
+// within app/Http/Kernel.php
 
 protected $middlewareGroups = [
     'web' => [

@@ -12,4 +12,9 @@ return [
      */
     'length' => env('RESPONSE_CACHE_LENGTH', 60),
 
+	/*
+     * Enable caching of queries.
+     */
+    'query' => env('RESPONSE_CACHE_QUERY', false),
+
 ];

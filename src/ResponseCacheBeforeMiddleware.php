@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class ResponseCacheBeforeMiddleware
+class ResponseCacheBeforeMiddleware extends ResponseCacheBaseMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,9 +21,7 @@ class ResponseCacheBeforeMiddleware
         // Only fire when explicitly enabled.
         if (config('response-cache.enable', false)) {
 
-            $request_uri = $request->url() . '?' . http_build_query($request->only('page'));
-
-            $key = 'route_' . Str::slug($request_uri);
+            $key = $this->key($request);
 
             if (Cache::has($key)) {
                 $content = Cache::get($key);
